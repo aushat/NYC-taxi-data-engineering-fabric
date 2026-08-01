@@ -8,7 +8,7 @@ The solution supports incremental monthly data processing, allowing newly availa
 
 ## 🖥️ Microsoft Fabric Workspace Overview
 
-The project was developed within a dedicated Microsoft Fabric workspace, bringing together all core components of the end-to-end data engineering solution in a single environment. The workspace includes the Lakehouse, Data Warehouse, Data Factory pipelines, Dataflow Gen2 transformations, Semantic Model, and Power BI reports, providing a unified platform for data ingestion, processing, storage, and visualization.
+The project was developed within a Microsoft Fabric workspace. The workspace includes the Lakehouse, Data Warehouse, Data Factory pipelines, Dataflow Gen2 transformations, Semantic Model, and Power BI reports, providing a unified platform for data ingestion, processing, storage, and visualization.
 
 ![Fabric Workspace](images/overview.png)
 
@@ -166,4 +166,18 @@ Potential enhancements include:
 - Implementing execution logging and monitoring for pipeline runs.
 - Adding advanced Power BI analytics such as trip demand forecasting.
 - Incorporating additional taxi datasets (Green Taxi, FHV and High Volume FHV).
-- Implementing Slowly Changing Dimensions (SCD) for historical tracking.
+- Implementing Slowly Changing Dimensions (SCD) for historical tracking
+
+---
+
+## 🎯 What I Learned
+
+Through this project, I gained hands-on experience with Microsoft's modern data engineering platform and developed practical skills in:
+
+- Designing end-to-end ETL workflows using Microsoft Fabric
+- Building and orchestrating Data Factory pipelines
+- Implementing dynamic SQL stored procedures with pipeline variables
+- Transforming and enriching data using Dataflow Gen2
+- Working with Lakehouse and Data Warehouse architectures
+- Developing interactive Power BI dashboards using Semantic Models
+- Applying incremental data processing concepts to automate monthly data ingestion
