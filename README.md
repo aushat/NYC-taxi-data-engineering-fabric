@@ -6,6 +6,12 @@ This project demonstrates the design and implementation of an end-to-end data en
 
 The solution supports incremental monthly data processing, allowing newly available datasets to be appended to the presentation layer without reprocessing historical records. This project showcases core data engineering concepts including ETL orchestration, data transformation, automation, warehousing, semantic modeling, and business intelligence reporting.
 
+## 🖥️ Microsoft Fabric Workspace Overview
+
+The project was developed within a dedicated Microsoft Fabric workspace, bringing together all core components of the end-to-end data engineering solution in a single environment. The workspace includes the Lakehouse, Data Warehouse, Data Factory pipelines, Dataflow Gen2 transformations, Semantic Model, and Power BI reports, providing a unified platform for data ingestion, processing, storage, and visualization.
+
+![Fabric Workspace](images/overview.png)
+
 ## 🏗️ Solution Architecture
 
 The diagram below illustrates the end-to-end data flow implemented in Microsoft Fabric.
