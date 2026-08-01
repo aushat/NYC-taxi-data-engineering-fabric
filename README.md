@@ -109,11 +109,11 @@ The dashboard includes:
 
 ### Executive Dashboard
 
-![Dashboard Page 1](images/dashboard-page1.png)
+![Dashboard Page 1](images/dashboard-page-1.png)
 
 ### Operational Insights
 
-![Dashboard Page 2](images/dashboard-page2.png)
+![Dashboard Page 2](images/dashboard-page-2.png)
 
 ---
 
