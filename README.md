@@ -167,9 +167,3 @@ Potential enhancements include:
 - Adding advanced Power BI analytics such as trip demand forecasting.
 - Incorporating additional taxi datasets (Green Taxi, FHV and High Volume FHV).
 - Implementing Slowly Changing Dimensions (SCD) for historical tracking.
-
----
-
-# 🙏 Acknowledgements
-
-This project was completed as part of a guided Microsoft Fabric learning project and further extended through additional implementation and customisation. It was developed to strengthen practical skills in modern data engineering, ETL automation, data warehousing, and business intelligence reporting.
