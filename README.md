@@ -34,36 +34,136 @@ This project uses the **New York City Yellow Taxi Trip Records** dataset publish
 Each monthly dataset is stored in **Parquet** format and ingested into Microsoft Fabric for automated processing.
 
 
-## 🔄 Project Workflow
+# 🔄 Project Workflow
 
-The project follows an end-to-end ETL workflow that automates the ingestion, transformation, and reporting of NYC Taxi trip data.
+## 1️⃣ Data Ingestion
 
-### 1️⃣ Data Ingestion
+Monthly NYC Yellow Taxi datasets and the Taxi Zone Lookup table are uploaded into a Fabric Lakehouse. The Lakehouse acts as the raw storage layer for all incoming data before processing begins.
 
-Monthly NYC Yellow Taxi datasets are downloaded in Parquet format and uploaded to a Fabric Lakehouse, which serves as the raw data storage layer. A separate Taxi Zone Lookup dataset is also uploaded to enrich trip records with readable pickup and dropoff locations.
+---
 
-> 📷 **Lakehouse**
->
-> ![Lakehouse](images/lakehouse.png)
->
-> 
-### 2️⃣ Data Warehouse
-
-A Fabric Data Warehouse was created to manage the analytical data model. Staging tables temporarily store newly ingested records, while presentation tables contain cleaned and transformed data ready for reporting.
-
-> 📷 **Warehouse**
->
-> ![Warehouse](images/warehouse.png)
-
-### 3️⃣ Data Pipelines
+## 2️⃣ Data Pipeline Orchestration
 
 Multiple Data Factory pipelines were developed to automate the ETL workflow.
 
 - **pl_stg_lookup** loads the Taxi Zone Lookup table into the staging layer.
-- **pl_stg_processing_nyctaxi** copies raw taxi data into staging tables and executes SQL stored procedures.
-- **pl_pres_processing_nyctaxi** transforms and loads cleaned data into presentation tables.
-- **pl_orchestrate_nyctaxi** orchestrates the entire workflow by executing all pipelines in sequence, enabling automated monthly processing.
+- **pl_stg_processing_nyctaxi** copies raw taxi trip data into warehouse staging tables.
+- **pl_pres_processing_nyctaxi** processes staging data into presentation tables.
+- **pl_orchestrate_nyctaxi** orchestrates the complete workflow by executing all pipelines in sequence.
 
-> 📷 **Data Pipelines**
->
-> ![Pipelines](images/pipelines.png)
+![Data Pipelines](images/pipelines.png)
+
+---
+
+## 3️⃣ SQL Stored Procedures
+
+A SQL stored procedure was implemented to support dynamic monthly processing.
+
+Pipeline variables automatically determine the processing window by defining the start and end dates for each execution. This ensures that only the required month's records are processed while preventing duplicate processing of historical data.
+
+---
+
+## 4️⃣ Data Transformation using Dataflow Gen2
+
+Dataflow Gen2 was used to prepare the analytical dataset before loading it into the presentation layer.
+
+Transformations included:
+
+- Data cleansing
+- Data type corrections
+- Query transformations
+- Joining taxi trip data with Taxi Zone Lookup data
+- Creating presentation-ready tables for reporting
+
+![Dataflow Gen2](images/dataflow.png)
+
+---
+
+## 5️⃣ Data Warehouse
+
+The transformed data is loaded into the Fabric Data Warehouse where it is organised into staging and presentation layers. Presentation tables serve as the source for reporting and analytics.
+
+---
+
+## 6️⃣ Semantic Model
+
+A Fabric Semantic Model exposes the presentation tables for reporting, enabling Power BI to efficiently query and visualize the processed data.
+
+---
+
+## 7️⃣ Power BI Dashboard
+
+An interactive Power BI dashboard was created to analyse NYC taxi operations.
+
+The dashboard includes:
+
+- Total Revenue
+- Number of Trips
+- Total Passengers
+- Average Fare per Trip
+- Average Trip Distance
+- Revenue by Borough
+- Top 10 Pickup Zones
+- Revenue Trends
+- Interactive Vendor, Payment Method and Date filters
+
+### Executive Dashboard
+
+![Dashboard Page 1](images/dashboard-page1.png)
+
+### Operational Insights
+
+![Dashboard Page 2](images/dashboard-page2.png)
+
+---
+
+# ✨ Key Features
+
+- End-to-end Microsoft Fabric implementation
+- Automated ETL pipeline orchestration
+- Dynamic SQL stored procedures using pipeline variables
+- Incremental monthly data processing
+- Data transformation using Dataflow Gen2
+- Fabric Data Warehouse with staging and presentation layers
+- Interactive Power BI dashboard with KPI reporting
+- Semantic Model integration for analytics
+
+---
+
+# 📚 Skills Demonstrated
+
+- Microsoft Fabric
+- Data Engineering
+- ETL Pipeline Development
+- Data Factory Pipelines
+- Fabric Lakehouse
+- Fabric Data Warehouse
+- SQL
+- SQL Stored Procedures
+- Dataflow Gen2
+- Data Transformation
+- Data Cleaning
+- Incremental Data Loading
+- Pipeline Orchestration
+- Power BI
+- Semantic Modeling
+- Business Intelligence
+- Parquet Data Processing
+
+---
+
+# 🚀 Future Improvements
+
+Potential enhancements include:
+
+- Automating ingestion directly from the NYC Taxi public dataset.
+- Implementing execution logging and monitoring for pipeline runs.
+- Adding advanced Power BI analytics such as trip demand forecasting.
+- Incorporating additional taxi datasets (Green Taxi, FHV and High Volume FHV).
+- Implementing Slowly Changing Dimensions (SCD) for historical tracking.
+
+---
+
+# 🙏 Acknowledgements
+
+This project was completed as part of a guided Microsoft Fabric learning project and further extended through additional implementation and customisation. It was developed to strengthen practical skills in modern data engineering, ETL automation, data warehousing, and business intelligence reporting.
